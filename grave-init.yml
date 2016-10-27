@@ -1,0 +1,79 @@
+# HTTP-specific options.
+server:
+  type: simple
+  registerDefaultExceptionMappers: false
+  applicationContextPath: /grave
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+
+
+hibernate:
+   database:
+     driverClass: com.mysql.jdbc.Driver
+     user: root
+     password:
+     url: jdbc:mysql://localhost:3306/kocaeligrave?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+
+     # Properties
+     properties:
+       charSet: UTF-8
+       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#       dialect: org.hibernate.dialect.SQLServerDialect
+#       hibernate.prefix: h_
+       hibernate.hbm2ddl.auto: create
+       # hibernate.jdbc.wrap_result_sets: true # performance fix specially for oracle
+
+
+logging:
+     # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+     level: INFO
+     # Logger-specific levels.
+     # loggers:
+     # org.hibernate.SQL: ALL
+
+guice:
+  scanPackages: [io.robe,com.mebitech.grave]
+
+# Quartz Scheduler configuration
+quartz:
+  instanceName: QuartzScheduler
+  threadPoolClass: org.quartz.simpl.SimpleThreadPool
+  threadCount: 10
+  threadPriority: 8
+  providers: [io.robe.quartz.annotation,io.robe.admin.quartz,com.mebitech]
+  scanPackages: [com.mebitech]
+  skipUpdateCheck: false
+  jobStore:
+    className: org.quartz.simpl.RAMJobStore
+#    className: org.quartz.impl.jdbcjobstore.JobStoreTX
+#    properties:
+#      org.quartz.jobStore.dataSource: QuarztDS
+#      org.quartz.dataSource.myDS.driver: com.mysql.jdbc.Driver
+#      org.quartz.dataSource.myDS.URL: jdbc:mysql://localhost:3306/robe
+#      org.quartz.dataSource.myDS.user: root
+#      org.quartz.dataSource.myDS.password:
+#      org.quartz.dataSource.myDS.maxConnections: 10
+#      org.quartz.jobStore.tablePrefix: QRTZ_
+#      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+
+
+auth:
+  tokenKey: auth-token
+  domain: 127.0.0.1
+  path: /
+  maxage: 1000 #s
+  secure: false
+  poolSize: 4 # parallel with cpu cores
+  algorithm: PBEWithMD5AndTripleDES
+  serverPassword: auto # auto for uuid, if it is cluster use custom password
+
+assets:
+ - resourcePath: C:\Users\Sony\IdeaProjects\robe-react-admin\src
+   uriPath:      /ui/
+   indexFile:    index.html
+   assetsName:   grave.admin
+   cached:       true
+   type: filesystem # use "cl
+
