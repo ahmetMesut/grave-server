@@ -166,7 +166,7 @@
                             </excludes>
                         </filter>
                     </filters>
-                    <finalName>kocaeli-all</finalName>
+                    <finalName>grave</finalName>
                 </configuration>
                 <executions>
                     <execution>
