@@ -2,7 +2,7 @@
 ### Java template
 *.class
 /.idea
-/kocaeli-grave-server.iml
+/grave-server.iml
 /grave-server.yml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
