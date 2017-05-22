@@ -34,7 +34,7 @@ logging:
      # org.hibernate.SQL: ALL
 
 guice:
-  scanPackages: [io.robe,com.mebitech.grave]
+  scanPackages: [io.robe,com.ahmetsahinoglu.grave]
 
 # Quartz Scheduler configuration
 quartz:
@@ -42,8 +42,8 @@ quartz:
   threadPoolClass: org.quartz.simpl.SimpleThreadPool
   threadCount: 10
   threadPriority: 8
-  providers: [io.robe.quartz.annotation,io.robe.admin.quartz,com.mebitech]
-  scanPackages: [com.mebitech]
+  providers: [io.robe.quartz.annotation,io.robe.admin.quartz,com.ahmetsahinoglu]
+  scanPackages: [com.ahmetsahinoglu]
   skipUpdateCheck: false
   jobStore:
     className: org.quartz.simpl.RAMJobStore
